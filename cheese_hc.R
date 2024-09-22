@@ -43,23 +43,21 @@ cheese_kmodes$modes # mode values aka cluster centroids
 # Add cluster labels to the dataset
 cheesedf_clean$cluster <- cheese_kmodes$cluster
 
-##parallel set plots 
-install.packages("ggalluvial")
-library(ggalluvial)
+# Convert character columns to factors
+cheesedf_clean <- data.frame(lapply(cheesedf_clean, function(x) {
+  if (is.character(x)) {
+    as.factor(x)
+  } else {
+    x
+  }}))
 
-cheesedf_clean$milk <- as.factor(cheesedf_clean$milk)
-cheesedf_clean$cluster <- as.factor(cheesedf_clean$cluster)
-#top_5_milk <- names(sort(table(cheesedf_clean$milk), decreasing = TRUE)[1:5])
-#cheesedf_clean$milk <- ifelse(cheesedf_clean$milk %in% top_5_milk, cheesedf_clean$milk, "Other")
+str(cheesedf_clean)
 
+# Compute Gower's distance for categorical data
+gower_dist <- daisy(cheesedf_clean, metric = "gower")
 
-ggplot(cheesedf_clean,
-       aes(axis1 = milk, axis2 = cluster)) +
-  geom_alluvium(aes(fill = cluster)) +
-  geom_stratum() +
-  geom_text(stat = "stratum", aes(label = after_stat(stratum))) +
-  scale_x_discrete(limits = c("Milk Type", "Cluster"), expand = c(0.1, 0.1)) +
-  labs(title = "Parallel Sets Plot for Milk Type and Clusters") +
-  theme_minimal() +
-  theme(axis.text.y = element_text(size = 12)) +  # Increase label size
-  theme(plot.margin = unit(c(1, 1, 1, 1), "cm"))
+# Calculate silhouette scores
+silhouette_score <- silhouette(cheese_kmodes$cluster, gower_dist)
+
+# Visualize silhouette plot
+fviz_silhouette(silhouette_score)
