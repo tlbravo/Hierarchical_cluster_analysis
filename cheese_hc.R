@@ -61,3 +61,25 @@ silhouette_score <- silhouette(cheese_kmodes$cluster, gower_dist)
 
 # Visualize silhouette plot
 fviz_silhouette(silhouette_score)
+
+#write data frame to CSV file to analyze in Excel
+write.csv(cheesedf_clean, "cheese_clusters.csv")
+
+#display number of observations in each cluster
+cheesedf_clean %>%
+  group_by(cluster) %>%
+  summarize(n())
+# 1: 487
+# 2: 272
+# 3: 428
+# somewhat evenly distributed
+
+cheesedf_clean %>%
+  group_by(cluster, milk) %>%
+  summarize(count = n(), .groups = "drop") %>%
+  mutate(percentage = count / sum(count) * 100)
+
+cheesedf_clean %>%
+  group_by(cluster, country) %>%
+  summarize(count = n(), .groups = "drop") %>%
+  mutate(percentage = count / sum(count) * 100)
