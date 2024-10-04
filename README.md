@@ -47,7 +47,7 @@ I used Gower's distance because the data is categorical.
 
 Finally I visualized the clusters using a silhouette plot.
 
-![silhouette](Images/silhouette.PNG) 
+![silhouette](Images/silhouette.png) 
 
 ## Analysis
 
