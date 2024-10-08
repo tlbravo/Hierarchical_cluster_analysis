@@ -39,16 +39,30 @@ My objective was to use hierarchical cluster analysis to see if there were notab
 
 I selected categorical columns from the dataset that I wanted to work with; cheese, milk, country, type, and flavor.
 
-Using K nearest neighbors, i inputed data into cells in the milk column in order to fill in missing values. These values would be based on the other values in the milk column. 
+Using K nearest neighbors, I inputed data into cells in the milk column in order to fill in missing values. These values would be based on the other values in the milk column. 
 
 Afterwards, I used K-modes clustering to assign the data to clusters for analysis. 
 
-I used Gower's distance because the data is categorical.
+I used Gower's distance to account for the categorical nature of the variables. This way the clusters would be more meaningful when there are a mix of types of variables. 
 
 Finally I visualized the clusters using a silhouette plot.
 
 ![silhouette](Images/silhouette.png) 
 
-## Analysis
+## Assumptions
+
+Gower's distance compares whether two observations have the same category or not. If two observations belong to the same category for a particular variable, the distance for that variable is 0. If they belong to different categories, the distance is 1. I am assuming that the observations are homogeneous within each cluster. 
+
+## Cluster Results
+
+* Cluster 1 (487 observations) 
+* Cluster 2 (272 observations)
+* Cluster 3 (428 observations)
+
+## Conclusions
+
+The clusters are somewhat evenly distributed. This could be due to balanced diversity in the data and that Gower's distance treats all variables equally and prevents any single categorical variable from dominating the clustering process. 
+
+
 
 

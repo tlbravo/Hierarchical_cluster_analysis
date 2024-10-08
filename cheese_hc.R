@@ -79,7 +79,13 @@ cheesedf_clean %>%
   summarize(count = n(), .groups = "drop") %>%
   mutate(percentage = count / sum(count) * 100)
 
+
 cheesedf_clean %>%
   group_by(cluster, country) %>%
+  summarize(count = n(), .groups = "drop") %>%
+  mutate(percentage = count / sum(count) * 100)
+
+cheesedf_clean %>%
+  group_by(type) %>%
   summarize(count = n(), .groups = "drop") %>%
   mutate(percentage = count / sum(count) * 100)
