@@ -1,4 +1,4 @@
-# Hierarchical_cluster_analysis
+# Hierarchical Cluster Analysis
 
 My objective was to use hierarchical cluster analysis to see if there were notable relationships between cheeses based on their different characteristics. I utilized this [dataset](https://github.com/rfordatascience/tidytuesday/blob/master/data/2024/2024-06-04/readme.md), comprised of 248 chheses based on information on [cheese.com](https://www.cheese.com/). This is an ongoing project. 
 
@@ -35,7 +35,7 @@ My objective was to use hierarchical cluster analysis to see if there were notab
 | alt_spellings   | character | Alternative spellings of the name of the cheese (likely overlaps with synonyms).                                                  |
 | producers       | character | Known producers of the cheese.                                                                                                    |
 
-## Data Cleaning, Exploration, and Visualization
+## Data Cleaning, Exploration
 
 I selected categorical columns from the dataset that I wanted to work with; cheese, milk, country, type, and flavor.
 
@@ -45,9 +45,13 @@ Afterwards, I used K-modes clustering to assign the data to clusters for analysi
 
 I used Gower's distance to account for the categorical nature of the variables. This way the clusters would be more meaningful when there are a mix of types of variables. 
 
-Finally I visualized the clusters using a silhouette plot.
+## Visualizations
 
-![silhouette](Images/silhouette.png) 
+### Silhouette plot
+![silhouette](Images/silhouette.png) <br>
+
+### Bar plot
+![bar_plot](Images/bar_plot.png) 
 
 ## Assumptions
 
@@ -55,13 +59,19 @@ Gower's distance compares whether two observations have the same category or not
 
 ## Cluster Results
 
-* Cluster 1 (487 observations) 
-* Cluster 2 (272 observations)
-* Cluster 3 (428 observations)
+![cluster_sizes](Images/cluster_sizes.png) 
 
 ## Conclusions
 
-The clusters are somewhat evenly distributed. This could be due to balanced diversity in the data and that Gower's distance treats all variables equally and prevents any single categorical variable from dominating the clustering process. 
+The majority of obervations are in Cluster 1. This could be due to inblanaced diversity in the data. Despite the fact that Gower's distance treats all variables equally and prevents any single categorical variable from dominating the clustering process. 
+
+This could also be due to dominant and overlapping characteristics in the data. For example, one type of milk, like cow's milk, or cheese type is overwhelmingly common. So, many overservations will be grouped in cluster 1. Meaning it could represent "typical" groups of cheese that share a lot of the same characteristics. 
+
+The following are the mode centroids, representing the most common characteristics within each cluster:: <br>
+![k_modes](Images/k_modes.png)
+
+The prevalence of attributes such as cow's milk, United States as the country of origin, and semi-hard cheese type supports the conclusion that these clusters are driven by highly common features in the data. This suggests that Cluster 1 likely represents the majority group with these dominant traits.
+
 
 
 
