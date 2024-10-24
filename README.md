@@ -51,7 +51,7 @@ I used Gower's distance to account for the categorical nature of the variables. 
 ![silhouette](Images/silhouette.png) <br>
 
 ### Bar plot
-![bar_plot](Images/bar_plot.png) 
+![bar_plot](Images/bar_plot.PNG) 
 
 ## Assumptions
 
@@ -59,7 +59,7 @@ Gower's distance compares whether two observations have the same category or not
 
 ## Cluster Results
 
-![cluster_sizes](Images/cluster_sizes.png) 
+![cluster_sizes](Images/cluster_sizes.PNG) 
 
 ## Conclusions
 
@@ -68,11 +68,10 @@ The majority of obervations are in Cluster 1. This could be due to inblanaced di
 This could also be due to dominant and overlapping characteristics in the data. For example, one type of milk, like cow's milk, or cheese type is overwhelmingly common. So, many overservations will be grouped in cluster 1. Meaning it could represent "typical" groups of cheese that share a lot of the same characteristics. 
 
 The following are the mode centroids, representing the most common characteristics within each cluster:: <br>
-![k_modes](Images/k_modes.png)
+![k_modes](Images/k_modes.PNG)
 
 The prevalence of attributes such as cow's milk, United States as the country of origin, and semi-hard cheese type supports the conclusion that these clusters are driven by highly common features in the data. This suggests that Cluster 1 likely represents the majority group with these dominant traits.
 
+## Suggestions for the future
 
-
-
-
+Further analysis can be used to uncover patterns within the diary and cheese market, allowing farms and businesses to segment products based on key characteristics. The insights gained can help  enhance targeted marketing and identify opportunities in customer preferences.
